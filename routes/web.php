@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/customers', 'CustomersController@showCustomers');
 // Route::get('/example', '\App\Http\Controllers\Controller@example');
+
+//Route to get all customers
+Route::get('/customers', 'CustomersController@showCustomers');
+
+//Route to get one customer by ID
+Route::get('customers/{id}', 'CustomersController@showCustomersId');
