@@ -21,3 +21,6 @@ Route::get('/customers', 'CustomersController@showCustomers');
 
 //Route to get one customer by ID
 Route::get('customers/{id}', 'CustomersController@showCustomersId');
+
+//Route to get one customer by ID AND that customers address
+Route::get('/customers/{id}/address', 'CustomersController@showCustomerAddress');

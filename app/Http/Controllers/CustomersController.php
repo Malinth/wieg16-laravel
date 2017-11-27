@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use App\CustomerAddress;
 
 
 class CustomersController extends Controller
@@ -25,4 +26,22 @@ class CustomersController extends Controller
         }
 
     }
+    
+
+    public function showCustomerAddress($customer_id)
+    {
+        $customerAddress = CustomerAddress::find($customer_id);
+
+        if ($customerAddress == null) {
+            $code = 404;
+            $response = ['message' => 'Address not found'];
+            header("content-type: application/json", true, $code);
+            echo json_encode($response);
+        } else {
+            $result = response()->json($customerAddress);
+            return $result;
+        }
+    }
+
+
 }
