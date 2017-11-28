@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Customer;
 use App\CustomerAddress;
+use App\Company;
+use DB;
 use Illuminate\Console\Command;
 
 class ImportCustomers extends Command
@@ -37,6 +39,8 @@ class ImportCustomers extends Command
      *
      * @return mixed
      */
+
+
     public function handle()
     {
         $this->info("Import customers: ");
@@ -55,19 +59,46 @@ class ImportCustomers extends Command
         // Closing
         curl_close($ch);
 
-// Kolla om modellen redan finns via Customer::find($id). Om modellen inte finns så blir det null.
+        //Spara först companies i en tom array
+        $companies = [];
+        // Kolla om modellen redan finns via Customer::find($id). Om modellen inte finns så blir det null.
         foreach ($result as $customer) {
-            $this->info("Importing customer: ".$customer['id']);
+            $this->info("Import/update customer: ".$customer['id']);
             $dbCustomer = Customer::findOrNew($customer['id']);
             $dbCustomer->fill($customer)->save();
 
-            if($customer['address']!==null) {
-                $this->info("Importing address: " . $customer['address']['id']);
+            // Importing addresses in separate table
+            if ($customer['address']==!null) {
+                $this->info("Import/update address: ".$customer['address']['id']);
                 $dbCustomerAddress = CustomerAddress::findOrNew($customer['address']['id']);
                 $dbCustomerAddress->fill($customer['address'])->save();
             }
+            // Importing companies in separate table
+            $this->info("Import/update companies: ".$customer['id']);
+            $companies[] = $customer['customer_company'];
+        }
 
+            $companies = array_unique($companies);
 
+            foreach ($companies as $company) {
+            $this->info("Import/update company table for ".$company);
+
+            /* @var Company $dbCompany */
+            $dbCompany = Company::findOrNew($company);
+            $dbCompany->company_name = $company;
+
+            $dbCompany->fill(['company_name' => $company]);
+            $dbCompany->save();
+
+             $customers = Customer::where('customer_company', '=', $dbCompany->company_name)->get();
+             foreach ($customers as $customer) {
+                 $customer->company_id = $dbCompany->id;
+                 $customer->save();
+             }
+
+            DB::table('customer')
+                ->where('customer_company', '=', $dbCompany->company_name)
+                ->update(['company_id' => $dbCompany->id]);
         }
     }
 }
