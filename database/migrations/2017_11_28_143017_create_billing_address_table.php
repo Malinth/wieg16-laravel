@@ -34,7 +34,7 @@ class CreateBillingAddressTable extends Migration
             $table->string('customer_email')->nullable();
             $table->string('customer_id')->nullable();
             $table->string('grand_total')->nullable();
-            $table->string('order-id')->nullable();
+            $table->string('order_id')->nullable();
             $table->string('increment_id')->nullable();
         });
     }
