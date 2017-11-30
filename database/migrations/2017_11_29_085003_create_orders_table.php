@@ -29,7 +29,6 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_amount')->nullable();
             $table->string('shipping_tax_amount')->nullable();
             $table->string('shipping_description')->nullable();
-            $table->string('shipping_amount')->nullable();
             $table->timestamps();
         });
     }
