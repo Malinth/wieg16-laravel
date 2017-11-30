@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShippingAddressTable extends Migration
+class CreateShippingAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateShippingAddressTable extends Migration
      */
     public function up()
     {
-            Schema::create('billing_address', function (Blueprint $table) {
+            Schema::create('shipping_addresses', function (Blueprint $table) {
                 $table->bigInteger('id', false, true)->primary();
 
                 $table->string('address_type')->nullable();
@@ -38,7 +38,8 @@ class CreateShippingAddressTable extends Migration
                 $table->string('status')->nullable();
                 $table->string('subtotal')->nullable();
                 $table->string('tax_amount')->nullable();
-                $table->string('updated_at')->nullable();
+                $table->timestamps();
+
 
             });
     }
@@ -49,7 +50,7 @@ class CreateShippingAddressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shipping_address');
+        Schema::dropIfExists('shipping_addresses');
     }
 
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillingAddressTable extends Migration
+class CreateBillingAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBillingAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('billing_address', function (Blueprint $table) {
+        Schema::create('billing_addresses', function (Blueprint $table) {
             $table->bigInteger('id', false, true)->primary();
 
             $table->string('address_type')->nullable();
@@ -22,7 +22,6 @@ class CreateBillingAddressTable extends Migration
             $table->string('country')->nullable();
             $table->string('country_id')->nullable();
             $table->string('customer_address_id')->nullable();
-            $table->string('customer_id')->nullable();
             $table->string('email')->nullable();
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
@@ -30,12 +29,12 @@ class CreateBillingAddressTable extends Migration
             $table->string('street')->nullable();
             $table->string('telephone')->nullable();
             $table->string('billing_address_id')->nullable();
-            $table->string('created_at')->nullable();
             $table->string('customer_email')->nullable();
             $table->string('customer_id')->nullable();
             $table->string('grand_total')->nullable();
             $table->string('order_id')->nullable();
             $table->string('increment_id')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -46,6 +45,6 @@ class CreateBillingAddressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billing_address');
+        Schema::dropIfExists('billing_addresses');
     }
 }

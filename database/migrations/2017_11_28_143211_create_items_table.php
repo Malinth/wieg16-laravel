@@ -17,7 +17,6 @@ class CreateItemsTable extends Migration
 
             $table->bigInteger('id', false, true)->primary();
             $table->string('amount_package')->nullable();
-            $table->string('created_at')->nullable();
             $table->string('item_id')->nullable();
             $table->string('name')->nullable();
             $table->string('order_id')->nullable();
@@ -29,9 +28,10 @@ class CreateItemsTable extends Migration
             $table->string('tax_amount')->nullable();
             $table->string('tax_percent')->nullable();
             $table->string('total_incl_tax')->nullable();
-            $table->string('updated_at')->nullable();
             $table->string('marking')->nullable();
-            });
+            $table->timestamps();
+
+        });
     }
 
     /**

@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    protected $table = "customer";
-
  //Justera modellens inställningar så att id inte är autoinkrementerande och timestamps är avstängt.
     public $incrementing = false;
     public $timestamps = false;
@@ -33,4 +31,10 @@ class Customer extends Model
         "customer_due_date_period",
         "company_id",
     ];
+
+   public function orders() {
+        return $this->belognsToMany(Order::class);
+
+    }
+
 }

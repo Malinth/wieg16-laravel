@@ -16,13 +16,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $table = "companies";
-
-    public $incrementing = true;
-    public $timestamps = false;
-
     protected $fillable = [
-                "id",
-                "company_name",
-           ];
+        "id",
+        "company_name",
+    ];
 }
