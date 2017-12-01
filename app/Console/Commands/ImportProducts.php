@@ -12,7 +12,6 @@ class ImportProducts extends Command
      *
      * @var string
      */
-  //  protected $signature = 'get:products {url} {file_name}';
     protected $signature = 'import:products';
 
     /**
@@ -39,22 +38,6 @@ class ImportProducts extends Command
      */
     public function handle()
     {
-       /* $url = $this->argument('url');
-        $file = $this->argument('file_name');
-        $this->info("Initializing curl..");
-
-        $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_HEADER, 0);
-
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-
-        $this->info("Sending request to " . $url);
-
-        $response = curl_exec($curl);
-
-        Storage::put($file, $response);
-
-        $this->info("File stored at: " . $file);*/
 
         $this->info("Import products: ");
         //  Initiate curl

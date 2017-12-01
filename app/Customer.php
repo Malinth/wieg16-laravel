@@ -31,10 +31,8 @@ class Customer extends Model
         "customer_due_date_period",
         "company_id",
     ];
-
-   public function orders() {
-        return $this->belognsToMany(Order::class);
-
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
 
 }

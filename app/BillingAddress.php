@@ -29,7 +29,6 @@ class BillingAddress extends Model
         "billing_address_id",
         "created_at",
         "customer_email",
-        "customer_id",
         "grand_total",
         "order_id",
         "increment_id",

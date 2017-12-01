@@ -29,3 +29,11 @@ Route::get('customers/{id}', 'CustomersController@showCustomersId');
 Route::get('/customers/{id}/address', 'CustomersController@showCustomerAddress');
 
 
+//Route to get all customers
+Route::get('/fb-login', 'FacebookController@index');
+
+//Route to get all customers
+Route::get('/login', 'FacebookController@loginForm');
+
+//Route to get all customers
+Route::get('/facebook', 'FacebookController@fbShow');
