@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CustomerAddress extends Model
 {
-    protected $table = "address";
+    protected $table = "addresses";
 
     // Primaru key kolumnen antas vara id
     public $incrementing = false;

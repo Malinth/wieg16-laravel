@@ -6,11 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
- //Justera modellens inställningar så att id inte är autoinkrementerande och timestamps är avstängt.
+
+
+
+    //Hämtar datan från tabellen
+    protected $table = "customers";
+    protected $key = "id";
+    //ditt id är aoutinkremerat
     public $incrementing = false;
+    //timestamp är avstängt, laravel sköter det åt dig.
     public $timestamps = false;
 
-// Jag vill vitlista kolumnerna:
 
     protected $fillable = [
         "id",

@@ -16,8 +16,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $fillable = [
-        "id",
-        "company_name",
-    ];
+    protected $fillable = ['company_name'];
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }
