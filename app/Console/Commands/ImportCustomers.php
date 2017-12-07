@@ -46,6 +46,7 @@ class ImportCustomers extends Command
         $this->info("Import customers: ");
         //  Initiate curl
         $ch = curl_init();
+        $file = "storage/app/products.json";
         $url = ("https://www.milletech.se/invoicing/export/customers");
 
         // Disable SSL verification
@@ -55,6 +56,7 @@ class ImportCustomers extends Command
         // Set the url
         curl_setopt($ch, CURLOPT_URL, $url);
         // Execute
+        $this->info("Sending request...");
         $result = json_decode(curl_exec($ch), true);
         // Closing
         curl_close($ch);

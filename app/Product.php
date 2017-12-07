@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $primaryKey = "entity_id";
 
-    public $incrementing = false;
-    public $timestamps = false;
 
     protected $fillable = [
-        "id",
         "amount_package",
         "attribute_set_id",
         "entity_id",

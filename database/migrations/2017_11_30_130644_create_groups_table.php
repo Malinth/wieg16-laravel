@@ -14,13 +14,12 @@ class CreateGroupsTable extends Migration
     public function up()
     {
         Schema::create('groups', function (Blueprint $table) {
-                $table->bigInteger('id', false, true)->primary();
-                $table->string('customer_group_id')->nullable();
-                $table->string('tax_class_id')->nullable();
-                $table->string('customer_group_code')->nullable();
-                $table->timestamps();
-            });
-        }
+            $table->bigInteger('customer_group_id', false, true)->primary();
+            $table->string('customer_group_code')->nullable();
+            $table->string('tax_class_id')->nullable();
+            $table->timestamps();
+        });
+    }
     /**
      * Reverse the migrations.
      *

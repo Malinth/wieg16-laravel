@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class GroupPrice extends Model
 {
-    public $incrementing = false;
-    public $timestamps = false;
+
+    protected $primaryKey = 'price_id';
 
 
     protected $fillable = [
-        'id',
         'group_id',
         'price',
         'price_id',

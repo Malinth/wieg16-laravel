@@ -14,11 +14,11 @@ class CreateGroupPricesTable extends Migration
     public function up()
     {
         Schema::create('group_prices', function (Blueprint $table) {
-            $table->bigInteger('id', false, true)->primary();
-            $table->string('group_id')->nullable();
-            $table->string('price')->nullable();
-            $table->string('price_id')->nullable();
             $table->timestamps();
+            $table->bigInteger('price_id', false, true)->primary();
+            $table->decimal('price',12,4);
+            $table->bigInteger('group_id', false, true);
+            $table->bigInteger('product_id', false, true);
         });
     }
 

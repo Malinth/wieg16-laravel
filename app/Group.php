@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    public $incrementing = false;
-    public $timestamps = false;
 
+    protected $primaryKey = 'customer_group_id';
 
     protected $fillable = [
-        'id',
         'customer_group_id',
         'tax_class_id',
         'customer_group_code',
