@@ -6,18 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-
-
-
-    //Hämtar datan från tabellen
     protected $table = "customers";
     protected $key = "id";
-    //ditt id är aoutinkremerat
     public $incrementing = false;
-    //timestamp är avstängt, laravel sköter det åt dig.
     public $timestamps = false;
-
-
     protected $fillable = [
         "id",
         "email",
@@ -37,6 +29,7 @@ class Customer extends Model
         "customer_due_date_period",
         "company_id",
     ];
+
     public function orders() {
         return $this->hasMany(Order::class);
     }
