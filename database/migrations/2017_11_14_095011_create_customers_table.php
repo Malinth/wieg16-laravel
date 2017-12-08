@@ -31,7 +31,7 @@ class CreateCustomersTable extends Migration
             $table->string('customer_invoice_email')->nullable();
             $table->string('customer_extra_text')->nullable();
             $table->string('customer_due_date_period')->nullable();
-
+            $table->string('company_id')->nullable();
             $table->timestamps();
         });
     }

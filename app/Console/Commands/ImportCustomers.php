@@ -82,7 +82,7 @@ class ImportCustomers extends Command
                 $customer->company_id = $dbCompany->id;
                 $customer->save();
             }
-            DB::table('customer')
+            DB::table('customers')
                 ->where('customer_company', '=', $dbCompany->company_name)
                 ->update(['company_id' => $dbCompany->id]);
         }
