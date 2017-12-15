@@ -37,3 +37,17 @@ Route::get('/login', 'FacebookController@loginForm');
 
 //Route to get all customers
 Route::get('/facebook', 'FacebookController@fbShow');
+
+Route::resource('companies', 'CompanyController');
+
+Route::resource('instagram', 'InstagramController');
+
+Route::get('/klarna', 'KlarnaController@index');
+
+Route::get('/klarna-confirmation', 'KlarnaController@confirmation');
+
+Route::get('/klarna-acknowledge', 'KlarnaController@acknowledge');
+
+Route::resource('groups', 'GroupController');
+
+Route::resource('products', 'ProductController');

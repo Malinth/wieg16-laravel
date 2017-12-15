@@ -23,6 +23,7 @@ class Product extends Model
         "stock_item",
         "is_in_stock",
         "type_id",
+        "price",
     ];
 
     public function groupPrice() {

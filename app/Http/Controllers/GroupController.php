@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Group;
 use Illuminate\Http\Request;
-
 class GroupController extends Controller
 {
     /**
@@ -14,7 +11,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        return view('groups/delete', ['groups' => Group::all()]);
+        return response()->json(Group::all());
     }
 
     /**
@@ -24,7 +22,7 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('groups/create');
     }
 
     /**
@@ -35,29 +33,34 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $group = new Group();
+        $group->fill($input)->save();
+        return response()->redirectToAction('GroupController@create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Group  $group
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show($id)
     {
-        //
+        $group = Group::find($id);
+        return view('groups.show', ['group' => $group]);
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * @param int $id
      * @param  \App\Group  $group
      * @return \Illuminate\Http\Response
      */
-    public function edit(Group $group)
+    public function edit($id)
     {
-        //
+        $edit = Group::find($id);
+        return View('groups.edit', ['edit' => $edit]);
     }
 
     /**
@@ -69,7 +72,10 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        //
+        $input = $request->all();
+        $group->fill($input)->save();
+        return response()->redirectToAction('GroupController@edit', ['id' => $group->customer_group_id]);
+        //return redirect('/update');
     }
 
     /**
@@ -80,6 +86,7 @@ class GroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        //
+        $group->delete();
+        return response()->redirectToAction('GroupController@index');
     }
 }
