@@ -1,15 +1,17 @@
 <?php
 
-namespace App;
 
+namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class InstagramPicture extends Model
 {
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
-    protected $primaryKey = "id";
     protected $fillable = [
-        "id",
-        "url",
-];
+        'id',
+        'url'
+    ];
 }

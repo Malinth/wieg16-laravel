@@ -24,9 +24,6 @@
             height: 100vh;
             margin: 0;
         }
-
-
-
         .links > a {
             color: #636b6f;
             padding: 0 25px;
@@ -36,17 +33,21 @@
             text-decoration: none;
             text-transform: uppercase;
         }
-
         #galleri{
             display: flex;
             flex-wrap: wrap;
+        }
+        .title {
+            font-size: 84px;
         }
 
         img{
             width: 20%;
             height: 200px;
             object-fit: cover;
-
+        }
+        .m-b-md {
+            margin-bottom: 30px;
         }
     </style>
 
@@ -54,19 +55,21 @@
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous">
-
     </script>
 </head>
 <body>
 
 <div class="content">
     <div class="title m-b-md">
-        My instagram
+      My instagram
     </div>
 </div>
 
 <div id="galleri">
-        <img src="{{$image->url}}">
+    @foreach($images as $img)
+        <img src="{{$img->url}}">
+
+    @endforeach
 </div>
 </body>
 </html>

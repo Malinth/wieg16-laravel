@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\InstagramPicture;
+use App\Twitter;
 use Illuminate\Http\Request;
 
-class InstagramPictureController extends Controller
+class TwitterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class InstagramPictureController extends Controller
      */
     public function index()
     {
-        return view('instagram/index', ['images' => InstagramPicture::all()]);
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,6 +26,7 @@ class InstagramPictureController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,45 +37,48 @@ class InstagramPictureController extends Controller
     {
         //
     }
+
     /**
      * Display the specified resource.
      *
+     * @param  \App\Twitter  $twitter
      * @return \Illuminate\Http\Response
      */
-    public function show($instagramPicture)
-    {
-
-        return view('instagram.show', ['image' => InstagramPicture::find( $instagramPicture)]);
-
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\InstagramPicture  $instagramPicture
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(InstagramPicture $instagramPicture)
+    public function show(Twitter $twitter)
     {
         //
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Twitter  $twitter
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Twitter $twitter)
+    {
+        //
+    }
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\InstagramPicture  $instagramPicture
+     * @param  \App\Twitter  $twitter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InstagramPicture $instagramPicture)
+    public function update(Request $request, Twitter $twitter)
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\InstagramPicture  $instagramPicture
+     * @param  \App\Twitter  $twitter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InstagramPicture $instagramPicture)
+    public function destroy(Twitter $twitter)
     {
         //
     }

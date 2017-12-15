@@ -19,7 +19,7 @@ class ImportInstagram extends Command
      *
      * @var string
      */
-    protected $description = 'Importing instagram';
+    protected $description = 'Importing instagram pictures';
 
     /**
      * Create a new command instance.
