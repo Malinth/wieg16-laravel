@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigInteger('entity_id', false, true)->primary();
             $table->string('attribute_set_id')->nullable();
-            $table->bigInteger('sku')->nullable();
+            $table->string('sku')->nullable();
             $table->string('entity_type_id')->nullable();
             $table->string('has_options')->nullable();
             $table->boolean('is_salable')->nullable();

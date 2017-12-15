@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Instagram;
+use App\InstagramPicture;
 use Illuminate\Http\Request;
 
-class InstagramController extends Controller
+class InstagramPictureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,8 @@ class InstagramController extends Controller
      */
     public function index()
     {
-        //
+        return view('instagram/show', ['url' => InstagramPicture::all()]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +24,6 @@ class InstagramController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,48 +34,45 @@ class InstagramController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Instagram  $instagram
+     * @param  \App\InstagramPicture  $instagramPicture
      * @return \Illuminate\Http\Response
      */
-    public function show(Instagram $instagram)
+    public function show(InstagramPicture $instagramPicture)
     {
-        //
+        $images = InstagramPicture::all();
+        return view('instagram.show', ['images' => $images]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Instagram  $instagram
+     * @param  \App\InstagramPicture  $instagramPicture
      * @return \Illuminate\Http\Response
      */
-    public function edit(Instagram $instagram)
+    public function edit(InstagramPicture $instagramPicture)
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Instagram  $instagram
+     * @param  \App\InstagramPicture  $instagramPicture
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Instagram $instagram)
+    public function update(Request $request, InstagramPicture $instagramPicture)
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Instagram  $instagram
+     * @param  \App\InstagramPicture  $instagramPicture
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Instagram $instagram)
+    public function destroy(InstagramPicture $instagramPicture)
     {
         //
     }

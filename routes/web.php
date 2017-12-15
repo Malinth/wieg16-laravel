@@ -40,7 +40,7 @@ Route::get('/facebook', 'FacebookController@fbShow');
 
 Route::resource('companies', 'CompanyController');
 
-Route::resource('instagram', 'InstagramController');
+Route::resource('instagram', 'InstagramPictureController');
 
 Route::get('/klarna', 'KlarnaController@index');
 

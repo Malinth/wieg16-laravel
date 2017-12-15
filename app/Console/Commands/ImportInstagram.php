@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Instagram;
+use App\InstagramPicture;
 use Illuminate\Console\Command;
 
 class ImportInstagram extends Command
@@ -12,7 +12,7 @@ class ImportInstagram extends Command
      *
      * @var string
      */
-    protected $signature = 'import:instagram';
+    protected $signature = 'import:instagram {url}';
 
     /**
      * The console command description.
@@ -59,18 +59,19 @@ class ImportInstagram extends Command
         $err = curl_error($curl);
 
         curl_close($curl);
+        $result = json_decode($response, true);
+
+        foreach ($result['data'] as $instagram) {
+            $this->info("Importing instagram: " . $instagram['id']);
 
 
-        foreach ($response as $media) {
-            $this->info("Importing media: " . $media['id']);
+                $dbinstagram = InstagramPicture::findOrNew($instagram['id']);
+                $dbinstagram->fill([
 
-
-            if (isset($media['$media']) && is_array($media['$media'])) {
-                $$media = Instagram::findOrNew($media['$media']['id']);
-                $$media->fill($media['$media']);
-                $$media->save();
+                    'id' => $instagram['id'],
+                    'url' => $instagram['images']['standard_resolution']['url']]
+                )->save();
             }
         }
         
-    }
 }

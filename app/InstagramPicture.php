@@ -4,13 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Instagram extends Model
+class InstagramPicture extends Model
 {
 
+    protected $primaryKey = "id";
     protected $fillable = [
         "id",
-        "width",
-        "height",
         "url",
 ];
 }
