@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Twitter;
 use Illuminate\Http\Request;
 
@@ -12,74 +13,20 @@ class TwitterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+
+    public function countWordsInTweets() {
+        $tweets = Twitter::all();
+        echo Twitter::countWords($tweets);
+        return View('twitter/index', ['tweets' => $send]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function searchTweets() {
+        return View('twitter/index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Twitter  $twitter
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Twitter $twitter)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Twitter  $twitter
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Twitter $twitter)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Twitter  $twitter
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Twitter $twitter)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Twitter  $twitter
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Twitter $twitter)
-    {
-        //
+    public function countWordsInTweetsAndSort(Request $request) {
+        $TheTweets = Twitter::getTweets($request->twittertoken, $request->word);
+        $sortedTweets = Twitter::countAndSort($TheTweets);
+        return View('twitter/show', ['words' => $sortedTweets]);
     }
 }

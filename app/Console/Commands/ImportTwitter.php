@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Twitter;
 use Illuminate\Console\Command;
 
 class ImportTwitter extends Command
@@ -60,17 +61,15 @@ class ImportTwitter extends Command
         curl_close($curl);
         $result = json_decode($response, true);
 
-
-        foreach ($result['data'] as $twitter) {
-            $this->info("Importing instagram: " . $twitter['id']);
-
-
-            $dbtwitter = Twitter::findOrNew($twitter['id']);
-            $dbtwitter->fill([
-
-                    'id' => $twitter ['user_mentions']['id'],
-                    'statuses' => $twitter['statuses']['text']]
-            )->save();
+        foreach($result['statuses'] as $tweet) {
+            $this->info("Importing/update tweets with id: " . $tweet['id']);
+            //
+            var_dump($tweet['text']);
+            $dbTweet = Twitter::findOrNew($tweet['id']);
+            $dbTweet->fill([
+                'id' => $tweet['id'],
+                'text' => $tweet['text']
+            ])->save();
         }
     }
 }

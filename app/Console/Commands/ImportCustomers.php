@@ -54,7 +54,7 @@ class ImportCustomers extends Command
         curl_close($ch);
         //Spara först companies i en tom array
         $companies = [];
-        // Kolla om modellen redan finns via Customer::find($id). Om modellen inte finns så blir det null.
+
         foreach ($result as $customer) {
             $this->info("Import/update customer: ".$customer['id']);
             $dbCustomer = Customer::findOrNew($customer['id']);

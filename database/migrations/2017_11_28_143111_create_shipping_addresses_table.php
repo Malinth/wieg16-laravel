@@ -21,16 +21,16 @@ class CreateShippingAddressesTable extends Migration
                 $table->string('company')->nullable();
                 $table->string('country')->nullable();
                 $table->string('country_id')->nullable();
-                $table->string('customer_address_id')->nullable();
-                $table->string('customer_id')->nullable();
+                $table->integer('customer_address_id')->nullable();
+                $table->bigInteger('customer_id')->nullable();
                 $table->string('email')->nullable();
                 $table->string('firstname')->nullable();
                 $table->string('lastname')->nullable();
-                $table->string('postcode')->nullable();
+                $table->integer('postcode')->nullable();
                 $table->string('street')->nullable();
-                $table->string('telephone')->nullable();
+                $table->bigInteger('telephone')->nullable();
 
-                $table->string('shipping_address_id')->nullable();
+                $table->bigInteger('shipping_address_id')->nullable();
                 $table->string('shipping_amount')->nullable();
                 $table->string('shipping_description')->nullable();
                 $table->string('shipping_method')->nullable();

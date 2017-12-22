@@ -17,14 +17,14 @@ class CreateItemsTable extends Migration
 
             $table->bigInteger('id', false, true)->primary();
             $table->string('amount_package')->nullable();
-            $table->string('item_id')->nullable();
+            $table->bigInteger('item_id')->nullable();
             $table->string('name')->nullable();
-            $table->string('order_id')->nullable();
-            $table->string('price')->nullable();
+            $table->bigInteger('order_id')->nullable();
+            $table->integer('price')->nullable();
             $table->string('price_incl_tax')->nullable();
             $table->string('qty')->nullable();
             $table->string('row_total')->nullable();
-            $table->string('sku')->nullable();
+            $table->integer('sku')->nullable();
             $table->string('tax_amount')->nullable();
             $table->string('tax_percent')->nullable();
             $table->string('total_incl_tax')->nullable();

@@ -21,10 +21,10 @@ class CreateAddressesTable extends Migration
             $table->string('email')->nullable();
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
-            $table->string('postcode')->nullable();
+            $table->bigInteger('postcode')->nullable();
             $table->string('street')->nullable();
             $table->string('city')->nullable();
-            $table->string('telephone')->nullable();
+            $table->bigInteger('telephone')->nullable();
             $table->string('country_id')->nullable();
             $table->string('address_type')->nullable();
             $table->string('company')->nullable();

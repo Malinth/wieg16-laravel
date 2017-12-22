@@ -24,6 +24,9 @@
             height: 100vh;
             margin: 0;
         }
+
+
+
         .links > a {
             color: #636b6f;
             padding: 0 25px;
@@ -33,43 +36,44 @@
             text-decoration: none;
             text-transform: uppercase;
         }
-        #galleri{
-            display: flex;
-            flex-wrap: wrap;
-        }
+
+
         .title {
             font-size: 84px;
         }
 
-        img{
-            width: 20%;
-            height: 200px;
-            object-fit: cover;
-        }
+
         .m-b-md {
             margin-bottom: 30px;
         }
     </style>
-
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous">
-    </script>
 </head>
 <body>
+<div class="flex-center position-ref full-height">
+    @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+            <a href="{{ url('/home') }}">Home</a>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('register') }}">Register</a>
+                @endauth
+        </div>
+    @endif
+        <div class="content">
+            <div class="title m-b-md">
+                Twitter
+            </div>
+        </div>
 
-<div class="content">
-    <div class="title m-b-md">
-        My instagram
-    </div>
-</div>
+    <form action="{{ action('TwitterController@countWordsInTweetsAndSort') }}" method="post">
+        {{ csrf_field() }}
+        <label>Twitter token</label>
+        <input name="twittertoken" type="text">
+        <label>Search for word</label>
+        <input name="word" type="text">
 
-<div id="galleri">
-    @foreach($tweets as $tweet)
-        <p>{{$tweet->text}}</p>
-
-    @endforeach
-</div>
+        <input name="submit" type="submit" value="Search">
+    </form>
 </body>
 </html>

@@ -42,11 +42,13 @@
             flex-wrap: wrap;
         }
 
-        img{
-            width: 20%;
-            height: 200px;
-            object-fit: cover;
+        .title {
+            font-size: 84px;
+        }
 
+
+        .m-b-md {
+            margin-bottom: 30px;
         }
     </style>
 

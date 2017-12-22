@@ -22,16 +22,16 @@ class CreateCustomersTable extends Migration
             $table->string('firstname')->nullable();
             $table->string('lastname')->nullable();
             $table->tinyInteger('gender')->nullable();
-            $table->string('customer_activated')->nullable();
+            $table->boolean('customer_activated')->nullable();
             $table->tinyInteger('group_id')->nullable();
             $table->string('customer_company')->nullable();
-            $table->string('default_billing')->nullable();
+            $table->tinyInteger('default_billing')->nullable();
             $table->string('default_shipping')->nullable();
-            $table->string('is_active')->nullable();
+            $table->boolean('is_active')->nullable();
             $table->string('customer_invoice_email')->nullable();
             $table->string('customer_extra_text')->nullable();
             $table->string('customer_due_date_period')->nullable();
-            $table->string('company_id')->nullable();
+            $table->tinyInteger('company_id')->nullable();
             $table->timestamps();
         });
     }

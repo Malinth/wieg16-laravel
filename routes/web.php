@@ -34,12 +34,17 @@ Route::get('/login', 'FacebookController@loginForm');
 Route::get('/facebook', 'FacebookController@fbShow');
 
 
-Route::get('/tweets', 'TwitterController@index');
+Route::get('/twitter/count', 'TwitterController@countWordsInTweets');
+Route::get('/twitter', 'TwitterController@searchTweets');
+Route::post('/twitter/count-words', 'TwitterController@countWordsInTweetsAndSort');
+
 Route::resource('instagram', 'InstagramPictureController');
 
 Route::get('/klarna', 'KlarnaController@index');
 Route::get('/klarna-confirmation', 'KlarnaController@confirmation');
 Route::get('/klarna-acknowledge', 'KlarnaController@acknowledge');
+
+Route::get('/stripe', 'StripeController@index');
 
 Route::resource('groups', 'GroupController');
 Route::resource('products', 'ProductController');
